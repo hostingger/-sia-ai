@@ -41,7 +41,7 @@ jobs:
           gradle-version: '8.2'
 
       - name: Build debug APK
-        run: gradle assembleDebug --stacktrace
+        run: gradle --no-daemon --max-workers=1 assembleDebug --stacktrace
 
       - name: Upload SIA APK
         uses: actions/upload-artifact@v4
