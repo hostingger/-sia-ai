@@ -7,7 +7,7 @@ on:
       - main
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   build:
@@ -63,3 +63,12 @@ jobs:
           name: SIA-Android-App-Bundle
           path: app/build/outputs/bundle/release/*.aab
           if-no-files-found: error
+
+      - name: Publish public test APK release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create v0.1.0-test app/build/outputs/apk/release/*.apk \
+            --title "SIA v0.1.0 Test APK" \
+            --notes "Pre-release testing build of SIA. Signed with the Android debug key for local testing only. This is not a production release. Review requested permissions before installing; Play Protect may still warn or block this app." \
+            --prerelease
