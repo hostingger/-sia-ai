@@ -690,7 +690,7 @@ private fun SuggestionChips(
                     modifier = Modifier
                         .clickable { onSuggestionClick(suggestion) },
                     shape = RoundedCornerShape(16.dp),
-                    color = VoidColor.Void700
+                    color = VoidColor.Void800
                 ) {
                     Text(
                         text = suggestion,
