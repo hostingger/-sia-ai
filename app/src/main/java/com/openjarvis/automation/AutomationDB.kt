@@ -21,7 +21,7 @@ data class AutomationEntity(
     val runCount: Int = 0
 )
 
-private fun AutomationManager.Automation.toEntity(): AutomationEntity {
+internal fun AutomationManager.Automation.toEntity(): AutomationEntity {
     val type: String
     var hour = 0
     var minute = 0
@@ -49,7 +49,7 @@ private fun AutomationManager.Automation.toEntity(): AutomationEntity {
     )
 }
 
-private fun AutomationEntity.toAutomation(): AutomationManager.Automation {
+internal fun AutomationEntity.toAutomation(): AutomationManager.Automation {
     val schedule = when (scheduleType) {
         "DAILY" -> AutomationManager.AutomationSchedule.Daily(scheduleHour, scheduleMinute)
         "WEEKLY" -> AutomationManager.AutomationSchedule.Weekly(scheduleDayOfWeek, scheduleHour, scheduleMinute)
