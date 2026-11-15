@@ -108,7 +108,8 @@ fun SettingsScreen(
                     onValueChange = { apiKey = it },
                     label = "API Key",
                     isFocused = false,
-                    isPassword = !showPassword,
+                    isPassword = true,
+                    passwordVisible = showPassword,
                     onTogglePassword = { showPassword = !showPassword }
                 )
                 
@@ -508,6 +509,7 @@ fun FloatingLabelTextField(
     label: String,
     isFocused: Boolean,
     isPassword: Boolean = false,
+    passwordVisible: Boolean = false,
     visible: Boolean = true,
     onTogglePassword: (() -> Unit)? = null
 ) {
@@ -567,7 +569,7 @@ fun FloatingLabelTextField(
                     fontSize = 14.sp,
                     color = VoidColor.TextPrimary
                 ),
-                visualTransformation = if (isPassword && !showPassword) 
+                visualTransformation = if (isPassword && !passwordVisible) 
                     PasswordVisualTransformation() else VisualTransformation.None
             )
         }
@@ -769,7 +771,7 @@ private fun PermissionRow(
             }
             
             Icon(
-                imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
+                imageVector = Icons.Filled.KeyboardArrowRight,
                 contentDescription = null,
                 tint = VoidColor.Red
             )
