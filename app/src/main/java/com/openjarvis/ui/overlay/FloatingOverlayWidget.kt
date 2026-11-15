@@ -561,7 +561,7 @@ private fun InputRowWithVoice(
 
         Spacer(modifier = Modifier.width(8.dp))
 
-        val sendButtonColor = if (commandText.isEmpty()) VoidColor.Void700 else VoidColor.Violet
+        val sendButtonColor = if (commandText.isEmpty()) VoidColor.Void800 else VoidColor.Violet
 
         Surface(
             modifier = Modifier.size(36.dp),
@@ -583,10 +583,11 @@ private fun InputRowWithVoice(
 
 @Composable
 private fun DividerLine() {
-    Divider(
-        modifier = Modifier.fillMaxWidth(),
-        thickness = 1.dp,
-        color = VoidColor.Void600
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(1.dp)
+            .background(VoidColor.Void600)
     )
 }
 
