@@ -40,12 +40,19 @@ jobs:
         with:
           gradle-version: '8.2'
 
-      - name: Build debug APK
-        run: gradle --no-daemon --max-workers=1 assembleDebug --stacktrace
+      - name: Build debug and minified test release APKs
+        run: gradle --no-daemon --max-workers=1 assembleDebug assembleRelease --stacktrace
 
       - name: Upload SIA APK
         uses: actions/upload-artifact@v4
         with:
           name: SIA-Android-APK
           path: app/build/outputs/apk/debug/*.apk
+          if-no-files-found: error
+
+      - name: Upload SIA test release APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: SIA-Test-Release-APK
+          path: app/build/outputs/apk/release/*.apk
           if-no-files-found: error
