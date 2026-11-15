@@ -21,6 +21,8 @@ android {
 
     buildTypes {
         release {
+            // Temporary test signing only; use a private keystore for public distribution.
+            signingConfig signingConfigs.debug
             minifyEnabled true
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
