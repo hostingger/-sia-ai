@@ -16,11 +16,10 @@ class JarvisAccessibilityService : AccessibilityService() {
         instance = this
         
         val info = AccessibilityServiceInfo().apply {
-            eventTypes = AccessibilityEvent.TYPES_ALL_MASK
+            eventTypes = AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED
             feedbackType = AccessibilityServiceInfo.FEEDBACK_GENERIC
-            flags = AccessibilityServiceInfo.FLAG_RETRIEVE_INTERACTIVE_WINDOWS or 
-                   AccessibilityServiceInfo.FLAG_REQUEST_ENHANCED_WEB_ACCESSIBILITY
-            notificationTimeout = 100
+            flags = 0
+            notificationTimeout = 1000
         }
         serviceInfo = info
     }
